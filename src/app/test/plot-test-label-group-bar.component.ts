@@ -107,7 +107,7 @@ export class PlotTestLabelGroupBarComponent {
       '%',
       true,
       true,
-      false
+      false,
     );
   }
 }

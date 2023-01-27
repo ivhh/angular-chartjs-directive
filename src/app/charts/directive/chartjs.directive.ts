@@ -143,8 +143,10 @@ export class ChartDirective implements AfterViewInit {
       let showGrid: boolean = false;
       let offset: boolean = false;
       let grace = axis?.grace ?? '0%';
+      let fixWidth = undefined;
 
       if (axis != null) {
+        fixWidth = axis.fixedWidth;
         if (axis.offset) {
           offset = axis.offset;
         }
@@ -173,10 +175,9 @@ export class ChartDirective implements AfterViewInit {
         yAxisShowGrid: showGrid,
         yAxisOffset: offset,
         yAxisGrace: grace,
+        yAxisFixWidth: fixWidth,
       });
     });
-
-    console.log(dataLabels);
 
     const config: ChartConfiguration = {
       type: opts.type,
@@ -275,6 +276,13 @@ export class ChartDirective implements AfterViewInit {
           }),
         },
       };
+      if (props.yAxisFixWidth) {
+        Object.assign(yAxis[props.id], {
+          afterFit(scale) {
+            scale.width = props.yAxisFixWidth;
+          },
+        });
+      }
       if (props.type) {
         yAxis[props.id]['type'] = props.type ?? 'linear';
       }

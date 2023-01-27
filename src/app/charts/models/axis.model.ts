@@ -58,4 +58,5 @@ export class ChartAxis {
   offset?: boolean;
   grace?: string;
   grid?: boolean;
+  fixedWidth?: number;
 }

@@ -117,7 +117,9 @@ export class PlotTestBarLineComponent {
     serie2.color = secondaryColor;
     serie2.name = 'reach';
 
-    let bins = this._distanceMaskSerie.map((m) => m != undefined ? this.timeline[m]['caption'] : '');
+    let bins = this._distanceMaskSerie.map((m) =>
+      m != undefined ? this.timeline[m]['caption'] : ''
+    );
 
     this.reachBudgetChart = new BarLineChart(
       [serie2],
@@ -126,7 +128,11 @@ export class PlotTestBarLineComponent {
       bins.length - 1,
       [serie1],
       0,
-      bins.length - 1
+      bins.length - 1,
+      undefined,
+      undefined,
+      undefined,
+      55
     );
   }
 }

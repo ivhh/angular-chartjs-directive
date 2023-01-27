@@ -21,7 +21,8 @@ export class BarLineChart extends CartesianBase {
     optMaxValue?: number,
     yAxisMainLabel?: string,
     xAxisLabel?: string,
-    yAxisSecondLabel?: string
+    yAxisSecondLabel?: string,
+    fixedYAxisWidth?: number
   ) {
     super();
     this.type = 'bar';
@@ -41,6 +42,7 @@ export class BarLineChart extends CartesianBase {
       ySecondAxis.showTicks = false;
       ySecondAxis.scaleType = 'invisible-linear';
       ySecondAxis.grace = '10%';
+      ySecondAxis.fixedWidth = fixedYAxisWidth;
       this.yAxes.push(ySecondAxis);
       let index = 0;
       optSeries.forEach((serie) => {
@@ -63,6 +65,7 @@ export class BarLineChart extends CartesianBase {
     yMainAxis.scaleType = 'informal';
     yMainAxis.grace = '10%';
     yMainAxis.grid = true;
+    yMainAxis.fixedWidth = fixedYAxisWidth;
     if (yAxisMainLabel !== undefined) {
       yMainAxis.label = yAxisMainLabel;
     }
