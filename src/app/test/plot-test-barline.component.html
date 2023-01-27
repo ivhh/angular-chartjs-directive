@@ -1,0 +1,12 @@
+<h5 class="py-3">Bar Line</h5>
+<div class="row" style="height: 350px">
+  <canvas
+    *ngIf="reachBudgetChart"
+    class="stat-chart w-100"
+    chartDir
+    [options]="reachBudgetChart"
+    width="180px"
+    height="180px"
+    #chartDirective="chartDir"
+  ></canvas>
+</div>
